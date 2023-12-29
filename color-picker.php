@@ -53,11 +53,6 @@
         var rgb = "RGB(" + pixel[0] + ", " + pixel[1] + ", " + pixel[2] + ")";
         selectedColorElement.textContent = "Warna terpilih: " + rgb;
 
-        // Menambahkan fitur lingkaran
-        var radius = 10; // Radius lingkaran bisa disesuaikan sesuai kebutuhan
-        drawCircle(x, y, radius);
-        showSelectedColorsInCircle(x, y, radius);
-
         // Menambahkan informasi capture ke dalam daftar
         var captureInfo = document.createElement("p");
         captureInfo.textContent = captureNumber + ". " + rgb + " Capture " + captureNumber;
@@ -66,31 +61,6 @@
         // Menambahkan nomor capture
         captureNumber++;
       });
-
-      // Fungsi untuk menggambar lingkaran di posisi tertentu
-      function drawCircle(x, y, radius) {
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, 2 * Math.PI);
-        ctx.strokeStyle = "#000000"; // Warna lingkaran (hitam)
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-
-      // Fungsi untuk menampilkan seluruh data RGB yang terseleksi di dalam lingkaran
-      function showSelectedColorsInCircle(x, y, radius) {
-        var selectedColors = [];
-
-        for (var i = x - radius; i <= x + radius; i++) {
-          for (var j = y - radius; j <= y + radius; j++) {
-            var pixel = ctx.getImageData(i, j, 1, 1).data;
-            var rgb = "RGB(" + pixel[0] + ", " + pixel[1] + ", " + pixel[2] + ")";
-            selectedColors.push(rgb);
-          }
-        }
-
-        console.log("Seluruh data RGB di dalam lingkaran:", selectedColors);
-        // Anda dapat menampilkan data RGB ini di bagian UI atau tempat lain sesuai kebutuhan
-      }
     });
   </script>
 
